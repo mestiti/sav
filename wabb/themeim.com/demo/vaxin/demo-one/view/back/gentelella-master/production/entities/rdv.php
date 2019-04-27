@@ -1,14 +1,14 @@
 <?PHP
 class rdv{
-	private $idreclamation;
+	private $idrdv;
 	
 	private $mailclient;
 	private $datee;
 	private $heure;
 	private $etat;
 	
-	function __construct($idreclamation,$mailclient,$datee,$heure,$etat){
-		$this->idreclamation=$idreclamation;
+	function __construct($idrdv,$mailclient,$datee,$heure,$etat){
+		$this->idrdv=$idrdv;
 		
 		$this->mailclient=$mailclient;
 		$this->datee=$datee;
@@ -18,7 +18,7 @@ class rdv{
 	}
 	
 	function getid(){
-		return $this->idreclamation;
+		return $this->idrdv;
 	}
 	
 	function getmail(){

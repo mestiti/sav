@@ -1,5 +1,5 @@
 <?PHP
-include "C:/wamp64/www/rdv/config.php";
+include "C:/wamp64/www/omekomek2/wabb/themeim.com/demo/vaxin/demo-one/config.php";
 class rdvr {
 function afficherrdv ($rdv){
 	echo "etat: ".$rdv->getid()."<br>";
@@ -13,11 +13,11 @@ function afficherrdv ($rdv){
 	}
 	
 	function ajouterrdv($rdv){
-		$sql="insert into rendezvous (idreclamation,mailclient,datee,heure,etat) values (:idreclamation,:mailclient, :datee,:heure,:etat)";
+		$sql="insert into rendezvous (idrdv,mailclient,datee,heure,etat) values (:idrdv,:mailclient, :datee,:heure,:etat)";
 		$db = config::getConnexion();
 		try{
         $req=$db->prepare($sql);
-         $idreclamation=$rdv->getid();
+         $idrdv=$rdv->getid();
 		 
         $mailclient=$rdv->getmail();
         $datee=$rdv->getdatee();
@@ -25,7 +25,7 @@ function afficherrdv ($rdv){
         $etat=$rdv->getetat();
         
 
-		$req->bindValue(':idreclamation',$idreclamation);
+		$req->bindValue(':idrdv',$idrdv);
 		
 		$req->bindValue(':mailclient',$mailclient);
 		$req->bindValue(':datee',$datee);
@@ -55,12 +55,12 @@ function afficherrdv ($rdv){
             die('Erreur: '.$e->getMessage());
         }	
 	}
-	function supprimerrdv($idreclamation){
-		$sql="DELETE FROM  rendezvous where idreclamation= :idreclamation";
+	function supprimerrdv($idrdv){
+		$sql="DELETE FROM  rendezvous where idrdv= :idrdv";
 		$db = config::getConnexion();
         $req=$db->prepare($sql);
 		 
-		$req->bindValue(':idreclamation',$idreclamation);
+		$req->bindValue(':idrdv',$idrdv);
 		try{
             $req->execute();
            // header('Location: index.php');
@@ -69,8 +69,8 @@ function afficherrdv ($rdv){
             die('Erreur: '.$e->getMessage());
         }
 	}
-	function modifierrdv($rdv,$idreclamation2){
-		$sql="UPDATE rendezvous SET idreclamation=:idreclamation, mailclient=:mailclient,datee=:datee,heure=:heure,etat=:etat WHERE idreclamation=:idreclamation2";
+	function modifierrdv($rdv,$idrdv2){
+		$sql="UPDATE rendezvous SET idrdv=:idrdv, mailclient=:mailclient,datee=:datee,heure=:heure,etat=:etat WHERE idrdv=:idrdv2";
 		
 		$db = config::getConnexion();
 		//$db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
@@ -79,7 +79,7 @@ try{
        
 
        $req=$db->prepare($sql);
-         $idreclamation=$rdv->getid();
+         $idrdv=$rdv->getid();
 		 
         $mailclient=$rdv->getmail();
         $datee=$rdv->getdatee();
@@ -87,8 +87,8 @@ try{
         $etat=$rdv->getetat();
 
 		
-		$req->bindValue(':idreclamation',$idreclamation);
-		$req->bindValue(':idreclamation2',$idreclamation2);
+		$req->bindValue(':idrdv',$idrdv);
+		$req->bindValue(':idrdv2',$idrdv2);
 		$req->bindValue(':mailclient',$mailclient);
 		$req->bindValue(':datee',$datee);
 		$req->bindValue(':heure',$heure);
@@ -106,11 +106,11 @@ try{
         }
 		
 	}
-	function recupererrdv($idreclamation){
-		$sql="SELECT * from rendezvous where idreclamation=:idreclamation";
+	function recupererrdv($idrdv){
+		$sql="SELECT * from rendezvous where idrdv=:idrdv";
 		$db = config::getConnexion();		
 		$req=$db->prepare($sql);		
-		$req->bindValue(':idreclamation',$idreclamation);
+		$req->bindValue(':idrdv',$idrdv);
 
 
 		try{
@@ -124,29 +124,34 @@ try{
         }
 	}
 	
-	function rechercherListerendezvous($tarif){
-		$sql="SELECT * from employe where tarifHoraire=$tarif";
-		$db = config::getConnexion();
-		try{
-		$liste=$db->query($sql);
-		return $liste;
-		}
-        catch (Exception $e){
-            die('Erreur: '.$e->getMessage());
-        }
-	}
-	function trier()
+	
+	function trierid()
 	{
-$sql="SElECT * From rendezvous order by etat ";
+		$sql="SElECT * from rendezvous ORDER BY idrdv ";
+		$db = config::getConnexion();
+		try{
+		$list=$db->query($sql);
+		return $list;
+		}
+        catch (Exception $e)
+        {
+            die('Erreur: '.$e->getMessage());
+        }
+	}
+	function affichermail(){
+		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
+		$sql="SElECT mail From reclamation where sujet='produit'";
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);
+
 		return $liste;
 		}
         catch (Exception $e){
             die('Erreur: '.$e->getMessage());
-        }
+        }	
 	}
+	
 }
 
 ?>

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
+    
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -271,21 +271,10 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>espace rendez vous</h3>
+                <h3>espace reclamation</h3>
               </div>
 
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for..." >
-                    <span class="input-group-btn">
-                      <form action="recherche.php" method="POST">
-                              <button class="btn btn-default" type="submit" >Go!</button>
-                                 </form>
-                          </span>
-                  </div>
-                </div>
-              </div>
+             
             </div>
             <div class="clearfix"></div>
 
@@ -293,7 +282,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>tous les rendez vous</h2>
+                    <h2>toutes le reclmations</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -311,14 +300,11 @@
                     </ul>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content">
 
-                   
-
-      <?PHP             
-include "C:/wamp64/www/omekomek2/wabb/themeim.com/demo/vaxin/demo-one/view/back/gentelella-master/production/core/rdvr.php";
-$rdv1r=new rdvr();
-$listerdv=$rdv1r->afficherrendezvous();
+<?PHP             
+include "C:/wamp64/www/omekomek2/wabb/themeim.com/demo/vaxin/demo-one/view/font/core/reclamationr.php";
+$reclamation1r=new reclamationr();
+$listerec=$reclamation1r->afficherreclamation();
 
 
 ?>
@@ -333,13 +319,12 @@ $listerdv=$rdv1r->afficherrendezvous();
                           <table id="datatable-keytable" class="table table-striped table-bordered">
                             <thead>
                               <tr>
-                                <th>idrendezvous</th>
+                                <th>cin</th>
                                 <th>mail du client</th>
-                                <th>date </th>
-                                <th>heure</th>
-                                <th>etat</th>
-                                 <th>supprimer</th>
-                                  <th>modifier</th>
+                                <th>sujet </th>
+                                <th>message</th>
+                                
+                                 
                                  
                                   
                                   
@@ -347,64 +332,23 @@ $listerdv=$rdv1r->afficherrendezvous();
                               </tr>
                             </thead>
 <?PHP
-foreach($listerdv as $row){
+foreach($listerec as $row){
   ?>
 
                             <tbody>
                               <tr>
-    <td><?PHP echo $row['idrdv']; ?></td>
-    
-  <td><?PHP echo $row['mailclient']; ?></td>
-  <td><?PHP echo $row['datee']; ?></td>
-  <td><?PHP echo $row['heure']; ?></td>
-  <td><?PHP echo $row['etat']; ?></td>
-
-  
-  <td><form method="POST" action="supprimerrendezvous.php">
-  <input type="submit" name="supprimer" value="supprimer">
-  <input type="hidden" value="<?PHP echo $row['idrdv']; ?>" name="idrdv">
-  </form>
-  </td>
-  <td><form method="POST" action="validmodif.php">
-  <input type="submit" name="modifier" value="modifier">
-  <input type="hidden" value="<?PHP echo $row['idrdv']; ?>" name="idmodif">
-  </form></td>
-  
-
-  
-  
-  </tr>
-  <?PHP
-}
-?>
-
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-
-<table id="datatable-keytable" class="table table-striped table-bordered">
-                            <thead>
-                              <tr>
-                                
-                                <th>mail des clients issus des reclamations</th>
-                          
-                              </tr>
-                            </thead>
-<?PHP
-$rdv2r=new rdvr();
-$listerdv=$rdv2r->affichermail();
-
-foreach($listerdv as $row){
-  ?>
-
-                            <tbody>
-                              <tr>
-    
+    <td><?PHP echo $row['cin']; ?></td>
     
   <td><?PHP echo $row['mail']; ?></td>
+  <td><?PHP echo $row['sujet']; ?></td>
+  <td><?PHP echo $row['message']; ?></td>
  
+  
+  
+  
+
+  
+  
   </tr>
   <?PHP
 }
@@ -417,64 +361,85 @@ foreach($listerdv as $row){
 
 
 
-                     <form class="form-horizontal form-label-left" novalidate action="ajoutrendezvous.php" method="POST">
 
-                      
-                      <span class="section">Ajout</span>
 
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name" >
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  class="form-control col-md-7 col-xs-12" placeholder="id rendez vous" required="required" type="number" name="idrdv">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  class="form-control col-md-7 col-xs-12"  placeholder="mail du client" type="email" name="mailclient" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-                        </div>
-                      </div>
-                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  class="form-control col-md-7 col-xs-12" placeholder="date ex:jj-mm-aaaa" required="required"  type="date" name="datee">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  class="form-control col-md-7 col-xs-12" placeholder="heure" required="required" type="time" name="heure">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                       <input  class="form-control col-md-7 col-xs-12" placeholder="etat" required="required" type="number" name="etat"  min="0" max="1">
-                         
-                        </div>
-                      </div>
-  
-                      
-                        <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" name="ajouter" value="ajouter" class="btn btn-primary">ajouter</button>
-                        </div>
+                  <div class="x_content">
 
-                      </form>
-
-                      <form action="rdvtrier.php"> 
-<input type="submit" name="trier" value="trier par cin" style="float: right;margin-right: 50px;" class="btn btn-primary btn-sm">
-</form>
- <form action="csv.php">
-<input type="submit" name="trier" value="csv" style="float: right;margin-right: 50px;" class="btn btn-primary btn-sm">
-</form>
+                   
 
  
+<h1 class="page-header">R&eacuteclamations</h1>
+        
+          
+          <div style="width: 500px; height: 500px">
+            <canvas id="myChart" width="1000" height="1000" style="display: block;height: 50px !important ;width: 20px!important ; border : 20px"></canvas>
 
+
+              <script>
+                  var ctx = document.getElementById("myChart").getContext('2d');
+                  var myChart = new Chart(ctx, {
+                          type: 'bar',
+                           data: {
+                      labels: ["services","Produit"],
+                                 datasets: [{
+                          label: '# of Votes',
+                                   data: [  <?php 
+
+
+                        $connection = mysqli_connect("localhost", "root", "", "sav");
+                        $sql = "SELECT COUNT(cin) as number from reclamation where  sujet='services'";
+                        $query = mysqli_query($connection, $sql);
+                        $table = null;
+                        while ($row = mysqli_fetch_array($query)) {
+                            $table = $row[0];
+                        }
+                        print_r($table);
+
+
+                        ?>
+                           , <?php 
+
+
+                            $connection = mysqli_connect("localhost", "root", "", "sav");
+                           $sql = "SELECT COUNT(cin) as number from reclamation where  sujet='produit'";
+                  $query = mysqli_query($connection, $sql);
+                       $table = null;
+        while ($row = mysqli_fetch_array($query)) {
+            $table = $row[0];
+        }
+        print_r($table);
+
+
+        ?>
+],
+            backgroundColor: [
+                'rgba(0, 102, 204)',
+                'rgba(102, 179, 255)'
+                //'rgba(255, 206, 86)'
+            ],
+            borderColor: [
+                'rgba(0, 102, 204)',
+                'rgba(102, 179, 255)'
+                //'rgba(255, 206, 86)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+
+
+</script>
+</div>
+           
                     </div>
                   </div>
                 </div>
@@ -527,6 +492,9 @@ foreach($listerdv as $row){
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
    
-  
+   <script src="path/to/chartjs/dist/Chart.js"></script>
+   
+
+	
   </body>
 </html>

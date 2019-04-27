@@ -165,7 +165,7 @@
 									<li>
 										<a href="contact2.html">Contact</a>
 										<ul class="sub-menu">
-											<li><a href="contact2.html">contact</a></li>
+											<li><a href="espacerec.php">espace reclmation</a></li>
 											<li><a href="404-two.html">404 pages</a></li>
 										</ul>
 									</li>
@@ -367,8 +367,8 @@
 
 
 <?PHP
-include "C:/wamp64/www/omekomek2/wabb/themeim.com/demo/vaxin/demo-one/entities/reclamation.php";
-include "C:/wamp64/www/omekomek2/wabb/themeim.com/demo/vaxin/demo-one/core/reclamationr.php";
+include "C:/wamp64/www/omekomek2/wabb/themeim.com/demo/vaxin/demo-one/view/font/entities/reclamation.php";
+include "C:/wamp64/www/omekomek2/wabb/themeim.com/demo/vaxin/demo-one/view/font/core/reclamationr.php";
 if (isset($_GET['cin'])){
 	$reclamationr=new reclamationr();
     $result=$reclamationr->recupererrec($_GET['cin']);
@@ -377,10 +377,11 @@ if (isset($_GET['cin'])){
 		$mail=$row['mail'];
 		$sujet=$row['sujet'];
 		$message=$row['message'];
+	}}
 		?>
 
 
-<form action="contact2modif.php" id="contact-form" name ="f" method="post">
+<form action="modifierReclamation.php" id="contact-form" name ="f" method="post">
 									
 										<div class="form_group half" >
 										<input type="text" name="cin" required="required"  placeholder="votre cin" 
@@ -415,18 +416,12 @@ if (isset($_GET['cin'])){
 									<input type="hidden" name="cin_ini" value="<?PHP echo $_GET['cin'];?>">
 
 								</form>
-<?PHP
-	}
-}
-if (isset($_POST['modifier'])){
-	$reclamation=new reclamation($_POST['cin'],$_POST['mail'],$_POST['sujet'],$_POST['message']);
-	$reclamationr=new reclamationr();
-	$reclamationr->modifierrec($reclamation,$_POST['cin_ini']);
-	echo "<script>alert('la modification est effectutée avec succes')</script>";
-	
-}
-?>
-
+<form action="mail.php" method="post">
+<input class="btn_two" type="submit" value="modifier" name="evoyer" >
+</form>
+<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d51106.28983949464!2d10.103397466618954!3d36.81509034061619!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1srue+ebn+zaydoun%2C+Denden!5e0!3m2!1sfr!2stn!4v1553473301654" width="1257" height="400" frameborder="0" style="border:0"
+							  allowfullscreen ></iframe>
+ 
  
 <div class="testimonial_hm_two" >
 			<div class="testimonial_hm_two_inner section_padding_two" top="1000" data-bg-image="media/images/banner-two/bg-three.png">

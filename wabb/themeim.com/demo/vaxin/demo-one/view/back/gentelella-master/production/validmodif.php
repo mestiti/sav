@@ -324,20 +324,20 @@ if (isset($_POST['idmodif'])){
   $rdvr=new rdvr();
     $result=$rdvr->recupererrdv($_POST['idmodif']);
 foreach ($result as $data ) {
-    $idreclamation=$data['idreclamation'];
+    $idrdv=$data['idrdv'];
     
     
     $mailclient=$data['mailclient'];
     $datee=$data['datee'];
     $heure=$data['heure'];
     $etat=$data['etat'];
- 
+ }}
     
     ?>
 
 
                    
-                        <form class="form-horizontal form-label-left"  action="#" method="POST">
+                        <form class="form-horizontal form-label-left"  action="modifierrendezvous.php" method="POST">
     <p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
                       </p>
                       <span class="section">Personal Info</span>
@@ -346,35 +346,35 @@ foreach ($result as $data ) {
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  class="form-control col-md-7 col-xs-12" placeholder="id" required="required" type="text" name="idreclamation"  value="<?PHP echo $idreclamation ?>">
+                          <input  class="form-control col-md-7 col-xs-12" placeholder="id" required="required" type="text" name="idrdv"  value="<?PHP echo $idrdv ?>">
                         </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  class="form-control col-md-7 col-xs-12"  placeholder="both name(s) e.g Jon Doe" required="required" type="text" name="mailclient"  value="<?PHP echo $mailclient ?>">
+                          <input  class="form-control col-md-7 col-xs-12" placeholder="mail du client" type="email" name="mailclient" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required=""  value="<?PHP echo $mailclient ?>">
                         </div>
                       </div>
                        <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  class="form-control col-md-7 col-xs-12" placeholder="both name(s) e.g Jon Doe" required="required"  type="date" name="datee"  value="<?PHP echo $datee ?>">
+                          <input  class="form-control col-md-7 col-xs-12" placeholder="date" required="required"  type="date" name="datee"  value="<?PHP echo $datee ?>">
                         </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  class="form-control col-md-7 col-xs-12" placeholder="both name(s) e.g Jon Doe" required="required" type="time" name="heure" value="<?PHP echo $heure ?>">
+                          <input  class="form-control col-md-7 col-xs-12" placeholder="heure" required="required" type="time" name="heure" value="<?PHP echo $heure ?>">
                         </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  class="form-control col-md-7 col-xs-12" placeholder="both name(s) e.g Jon Doe" required="required" type="number" name="etat"  min="0" max="1" value="<?PHP echo $etat ?>">
+                          <input  class="form-control col-md-7 col-xs-12" placeholder="etat" required="required" type="number" name="etat"  min="0" max="1" value="<?PHP echo $etat ?>">
                         </div>
                       </div>
   
@@ -391,25 +391,7 @@ foreach ($result as $data ) {
 
                    
 
-                    <?PHP
-
-  }
-
-}
-
-if (isset($_POST['etat']) and isset($_POST['idreclamation']) and isset($_POST['datee']) and isset($_POST['heure']) and isset($_POST['mailclient']))
-{
-   
-
-  $rdv=new rdv($_POST['idreclamation'],$_POST['mailclient'],$_POST['datee'],$_POST['heure'],$_POST['etat']);
-  $rdvr=new rdvr();
-  $rdvr->modifierrdv($rdv,$_POST['id_ini']);
-  echo "<script>alert('la modification est effectutée avec succes')</script>";
-  
-  
-}
-
-?>
+                    
 
 
                     

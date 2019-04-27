@@ -274,17 +274,7 @@
                 <h3>espace rendez vous</h3>
               </div>
 
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for..." >
-                    <span class="input-group-btn">
-                      <form action="recherche.php" method="POST">
-                              <button class="btn btn-default" type="submit" >Go!</button>
-                                 </form>
-                          </span>
-                  </div>
-                </div>
+              
               </div>
             </div>
             <div class="clearfix"></div>
@@ -293,7 +283,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>tous les rendez vous</h2>
+                    <h2>gestion des mails</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -333,14 +323,11 @@ $listerdv=$rdv1r->afficherrendezvous();
                           <table id="datatable-keytable" class="table table-striped table-bordered">
                             <thead>
                               <tr>
-                                <th>idrendezvous</th>
+                                
                                 <th>mail du client</th>
                                 <th>date </th>
                                 <th>heure</th>
-                                <th>etat</th>
-                                 <th>supprimer</th>
-                                  <th>modifier</th>
-                                 
+                                
                                   
                                   
                                 
@@ -352,23 +339,14 @@ foreach($listerdv as $row){
 
                             <tbody>
                               <tr>
-    <td><?PHP echo $row['idrdv']; ?></td>
+   
     
   <td><?PHP echo $row['mailclient']; ?></td>
   <td><?PHP echo $row['datee']; ?></td>
   <td><?PHP echo $row['heure']; ?></td>
-  <td><?PHP echo $row['etat']; ?></td>
+  
 
   
-  <td><form method="POST" action="supprimerrendezvous.php">
-  <input type="submit" name="supprimer" value="supprimer">
-  <input type="hidden" value="<?PHP echo $row['idrdv']; ?>" name="idrdv">
-  </form>
-  </td>
-  <td><form method="POST" action="validmodif.php">
-  <input type="submit" name="modifier" value="modifier">
-  <input type="hidden" value="<?PHP echo $row['idrdv']; ?>" name="idmodif">
-  </form></td>
   
 
   
@@ -377,101 +355,51 @@ foreach($listerdv as $row){
   <?PHP
 }
 ?>
-
                             </tbody>
                           </table>
                         </div>
                       </div>
                     </div>
 
-<table id="datatable-keytable" class="table table-striped table-bordered">
-                            <thead>
-                              <tr>
-                                
-                                <th>mail des clients issus des reclamations</th>
-                          
-                              </tr>
-                            </thead>
-<?PHP
-$rdv2r=new rdvr();
-$listerdv=$rdv2r->affichermail();
-
-foreach($listerdv as $row){
-  ?>
-
-                            <tbody>
-                              <tr>
-    
-    
-  <td><?PHP echo $row['mail']; ?></td>
- 
-  </tr>
-  <?PHP
-}
-?>
-
-                            </tbody>
-                          </table>
 
 
 
 
 
-                     <form class="form-horizontal form-label-left" novalidate action="ajoutrendezvous.php" method="POST">
+                     <form class="form-horizontal form-label-left" novalidate action="mail.php" method="POST">
 
                       
-                      <span class="section">Ajout</span>
+                      <span class="section">envoyer mail</span>
 
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name" >
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  class="form-control col-md-7 col-xs-12" placeholder="id rendez vous" required="required" type="number" name="idrdv">
-                        </div>
+                        
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  class="form-control col-md-7 col-xs-12"  placeholder="mail du client" type="email" name="mailclient" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+                          <input  class="form-control col-md-7 col-xs-12"  placeholder="mail du client" type="email" name="mailto" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
                         </div>
                       </div>
                        <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  class="form-control col-md-7 col-xs-12" placeholder="date ex:jj-mm-aaaa" required="required"  type="date" name="datee">
+                          <textarea  class="form-control col-md-7 col-xs-12" name="msg" placeholder="votre message"></textarea>
                         </div>
                       </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  class="form-control col-md-7 col-xs-12" placeholder="heure" required="required" type="time" name="heure">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                       <input  class="form-control col-md-7 col-xs-12" placeholder="etat" required="required" type="number" name="etat"  min="0" max="1">
-                         
-                        </div>
-                      </div>
+                      
+                      
   
                       
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" name="ajouter" value="ajouter" class="btn btn-primary">ajouter</button>
+                          <button type="submit" name="envoyer" value="envoyer" class="btn btn-primary">envoyer</button>
                         </div>
 
                       </form>
-
-                      <form action="rdvtrier.php"> 
-<input type="submit" name="trier" value="trier par cin" style="float: right;margin-right: 50px;" class="btn btn-primary btn-sm">
-</form>
- <form action="csv.php">
-<input type="submit" name="trier" value="csv" style="float: right;margin-right: 50px;" class="btn btn-primary btn-sm">
-</form>
+                     
 
  
 
@@ -526,7 +454,7 @@ foreach($listerdv as $row){
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-   
-  
+   <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+	
   </body>
 </html>

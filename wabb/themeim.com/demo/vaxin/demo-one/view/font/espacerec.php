@@ -313,44 +313,42 @@
 					<div class="col-xl-6 col-md-6">
 						<div class="error_cont_img">
 							<?PHP
-							include "C:/wamp64/www/omekomek2/wabb/themeim.com/demo/vaxin/demo-one/core/reclamationr.php";
+							include "C:/wamp64/www/omekomek2/wabb/themeim.com/demo/vaxin/demo-one/view/font/core/reclamationr.php";
+							
 							$reclamation1r=new reclamationr();
+						
 $listerec=$reclamation1r->afficherreclamation();
 
 //var_dump($listeEmployes->fetchAll());
 ?>
-<table border="1" >
-<tr>
-<td>Cin</td>
-<td>mail</td>
-<td>sujet</td>
-<td>message</td>
 
-<td>supprimer</td>
-<td>modifier</td>
-</tr>
+
+
+
 
 <?PHP
 foreach($listerec as $row){
 	?>
-	<tr>
-	<td><?PHP echo $row['cin']; ?></td>
-	<td><?PHP echo $row['mail']; ?></td>
-	<td><?PHP echo $row['sujet']; ?></td>
-	<td><?PHP echo $row['message']; ?></td>
-	
-	<td><form method="POST" action="supprimerReclamation.php">
-	<input type="submit"  name="supprimer" value="supprimer">
+	<div class="error_cont_desc"></br>
+	<p> votre cin: <?PHP  echo $row['cin']; ?></p>
+	<p>votre mail: <?PHP echo $row['mail']; ?></p>
+	<p>votre sujet: <?PHP echo $row['sujet']; ?></p>
+	<p>votre message: <?PHP echo $row['message']; ?></p>
+</div>
+
+	<form method="POST" action="supprimerReclamation.php">
+	<input type="submit" name="supprimer" value="supprimer">
 	<input type="hidden" value="<?PHP echo $row['cin']; ?>" name="cin">
 	</form>
-	</td>
-	<td><a href="contact2modif.php?cin=<?PHP echo $row['cin']; ?>">
-	Modifier</a></td>
-	</tr>
+	
+	<a href="contact2modif.php?cin=<?PHP echo $row['cin']; ?>">
+	Modifier</a>
+	
+	
 	<?PHP
 }
 ?>
-</table>
+
 
 
 						</div>

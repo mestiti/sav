@@ -1,1 +1,0 @@
-$('logolarge.html#snipe').lens();

@@ -1,6 +1,23 @@
+
+
+
+<?php
+include "C:/wamp64/www/omekomek2/wabb/themeim.com/demo/vaxin/demo-one/view/back/gentelella-master/production/core/rdvr.php";
+$rdvr2=new rdvr();
+$listerdv=$rdvr2->trierid();
+?>
+
+      
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
+
+
+
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -277,11 +294,10 @@
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for..." >
+                    <input type="text" class="form-control" placeholder="Search for...">
                     <span class="input-group-btn">
-                      <form action="recherche.php" method="POST">
-                              <button class="btn btn-default" type="submit" >Go!</button>
-                                 </form>
+                              <button class="btn btn-default" type="button">Go!</button>
+
                           </span>
                   </div>
                 </div>
@@ -315,15 +331,6 @@
 
                    
 
-      <?PHP             
-include "C:/wamp64/www/omekomek2/wabb/themeim.com/demo/vaxin/demo-one/view/back/gentelella-master/production/core/rdvr.php";
-$rdv1r=new rdvr();
-$listerdv=$rdv1r->afficherrendezvous();
-
-
-?>
-
-
   <div class="x_content">
                     <div class="row">
                       <div class="col-sm-12">
@@ -333,85 +340,50 @@ $listerdv=$rdv1r->afficherrendezvous();
                           <table id="datatable-keytable" class="table table-striped table-bordered">
                             <thead>
                               <tr>
-                                <th>idrendezvous</th>
+                                <th>idreclamation</th>
                                 <th>mail du client</th>
                                 <th>date </th>
                                 <th>heure</th>
                                 <th>etat</th>
                                  <th>supprimer</th>
                                   <th>modifier</th>
-                                 
-                                  
-                                  
                                 
                               </tr>
                             </thead>
+
+
 <?PHP
 foreach($listerdv as $row){
   ?>
 
                             <tbody>
                               <tr>
-    <td><?PHP echo $row['idrdv']; ?></td>
+    <td><?PHP echo $row['idreclamation']; ?></td>
     
   <td><?PHP echo $row['mailclient']; ?></td>
   <td><?PHP echo $row['datee']; ?></td>
   <td><?PHP echo $row['heure']; ?></td>
   <td><?PHP echo $row['etat']; ?></td>
-
   
   <td><form method="POST" action="supprimerrendezvous.php">
   <input type="submit" name="supprimer" value="supprimer">
-  <input type="hidden" value="<?PHP echo $row['idrdv']; ?>" name="idrdv">
+  <input type="hidden" value="<?PHP echo $row['idreclamation']; ?>" name="idreclamation">
   </form>
   </td>
   <td><form method="POST" action="validmodif.php">
   <input type="submit" name="modifier" value="modifier">
-  <input type="hidden" value="<?PHP echo $row['idrdv']; ?>" name="idmodif">
+  <input type="hidden" value="<?PHP echo $row['idreclamation']; ?>" name="idmodif">
   </form></td>
-  
-
-  
-  
   </tr>
   <?PHP
 }
 ?>
-
                             </tbody>
                           </table>
                         </div>
                       </div>
                     </div>
 
-<table id="datatable-keytable" class="table table-striped table-bordered">
-                            <thead>
-                              <tr>
-                                
-                                <th>mail des clients issus des reclamations</th>
-                          
-                              </tr>
-                            </thead>
-<?PHP
-$rdv2r=new rdvr();
-$listerdv=$rdv2r->affichermail();
-
-foreach($listerdv as $row){
-  ?>
-
-                            <tbody>
-                              <tr>
-    
-    
-  <td><?PHP echo $row['mail']; ?></td>
- 
-  </tr>
-  <?PHP
-}
-?>
-
-                            </tbody>
-                          </table>
 
 
 
@@ -426,7 +398,7 @@ foreach($listerdv as $row){
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name" >
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  class="form-control col-md-7 col-xs-12" placeholder="id rendez vous" required="required" type="number" name="idrdv">
+                          <input  class="form-control col-md-7 col-xs-12" placeholder="id reclamation" required="required" type="number" name="idreclamation">
                         </div>
                       </div>
                       <div class="item form-group">
@@ -454,8 +426,7 @@ foreach($listerdv as $row){
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                       <input  class="form-control col-md-7 col-xs-12" placeholder="etat" required="required" type="number" name="etat"  min="0" max="1">
-                         
+                          <input  class="form-control col-md-7 col-xs-12" placeholder="etat" required="required" type="number" name="etat" min="0" max="1">
                         </div>
                       </div>
   
@@ -465,21 +436,19 @@ foreach($listerdv as $row){
                         </div>
 
                       </form>
-
                       <form action="rdvtrier.php"> 
 <input type="submit" name="trier" value="trier par cin" style="float: right;margin-right: 50px;" class="btn btn-primary btn-sm">
 </form>
- <form action="csv.php">
+<form action="csv.php">
 <input type="submit" name="trier" value="csv" style="float: right;margin-right: 50px;" class="btn btn-primary btn-sm">
 </form>
-
- 
 
                     </div>
                   </div>
                 </div>
               
-               
+                
+
                       </div>
                   </div>
                 </div>
@@ -523,10 +492,11 @@ foreach($listerdv as $row){
     <script src="../vendors/nprogress/nprogress.js"></script>
     <!-- validator -->
     <script src="../vendors/validator/validator.js"></script>
-
+<script src="path/to/chartjs/dist/Chart.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-   
-  
+     
+     
+	
   </body>
 </html>

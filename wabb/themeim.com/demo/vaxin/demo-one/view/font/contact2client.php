@@ -1,8 +1,30 @@
+<?php
+session_start ();  
+ 
+// On récupère nos variables de session
+if (isset($_SESSION['l']) && isset($_SESSION['p']) && $_SESSION['r']=="client") 
+{ 
+   /*echo '<body onLoad="alert(\'Bienvenue! Votre login est '.$_SESSION['l'].' <br>et votre mot de passe est '.$_SESSION['p'].
+  '</b>Vous etes '.$_SESSION['r'].'  Identifiant de votre session est :'.session_id().'\')">'; */
+ 
+
+}
+
+else { 
+      echo '<body onLoad="alert(vous devez vous connecter )">';
+    //echo '<a href="./index.html">Cliquer pour se connecter</a>';
+    header("location:contact2.php");
+
+}  
+
+
+
+?>
 <!doctype html>
 <html>
 
 
-<!-- Mirrored from themeim.com/demo/vaxin/demo-one/404-two.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 24 Feb 2019 14:05:47 GMT -->
+<!-- Mirrored from themeim.com/demo/vaxin/demo-one/contact2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 24 Feb 2019 14:05:46 GMT -->
 <head>
 	<!-- Meta Data -->
 	<meta charset="utf-8">
@@ -31,11 +53,13 @@
 	<!-- Site Stylesheet -->
 	<link rel="stylesheet" href="assets/css/app.css" type="text/css">
 
+	<link rel="stylesheet" href="contact\defil.css" type="text/css">
+<link rel="stylesheet" href="contact\calendar.css" type="text/css">
 	<link id="theme" rel="stylesheet" href="assets/css/theme-color/theme-default.css" type="text/css">
 
 	<!-- Google Web Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700%7CRoboto:300,400,500,700,900" rel="stylesheet">
-
+  <script type="text/javascript src="C:\Users\Asus\Desktop\Nouveau dossier\omekomek2\wabb\themeim.com\demo\vaxin\demo-one\contactjs.js"></script>
 
 </head>
 
@@ -105,21 +129,28 @@
 						</a>
 									</li>
 								</ul>
+
 							</div>
 						</div>
+
 					</div>
 				</div>
+				
 			</section>
+
 			<!-- End top toolbar -->
 
 			<!-- Start Main Menu -->
+			
 			<section class="header_nav">
 				<div class="vigo_container_one">
 					<div class="row">
 						<div class="col-auto mr-auto">
 							<div class="header_logo">
-								<a href="index.html">
-					<img src="assets/img/hm-two-logo.png" alt="">
+								<a href="logolarge.html">
+					<img src="assets/img/hm-two-logo.png" alt="" class="snipe">
+
+					
 				</a>
 							</div>
 						</div>
@@ -127,7 +158,7 @@
 							<nav class="main_menu">
 								<ul id="example-one">
 									<li>
-										<a  href="index2.html">Home</a>
+										<a href="index2.html">Home</a>
 										<ul class="sub-menu">
 											<li><a href="index2.html">Home One</a></li>
 											<li><a href="index.html">Home Two</a></li>
@@ -159,20 +190,17 @@
 										<a href="Livraison.html">Livraison</a>
 									</li>
 									<li>
-										<a href="contact2.html">Contact</a>
+										<a href="contact2.html">service apres vente</a>
 										<ul class="sub-menu">
-											<li><a href="contact2.html">contact</a></li>
-											<li><a href="404-two.html">404 pages</a></li>
+											<li><a href="espacerec.php">espace reclamation</a></li>
+											
 										</ul>
 									</li>
 								</ul>
 							</nav>
 						</div>
-						<div class="col-auto">
-							<div class="hdr_btn_wrapper">
-								<a href="#" class="btn_one">Purchase</a>
-							</div>
-						</div>
+						
+
 					</div>
 				</div>
 			</section>
@@ -186,12 +214,7 @@
 							<div class="phone_number">
 								<span class="flaticon-phone-call"></span> <a href="#">+1 (895) 852–6523</a>
 							</div>
-							<div class="header_login">
-								<div class="whc_toolbar_main_login">
-									<a href="#" data-toggle="modal" data-target="#signUpModal">register</a>|
-									<a href="#" data-toggle="modal" data-target="#signInModal">login</a>
-								</div>
-							</div>
+							
 
 						</div>
 					</div>
@@ -216,7 +239,9 @@
 			<div class="mobile_accor_togo">
 				<div class="mobile_accor_logo">
 					<a href="index.html">
-				<img src="assets/img/hm-two-logo.png" alt="">
+				<img src="assets/img/hm-two-logo.png" alt="" width="">
+				<img src="assets/img/logo.png" alt="" width="">
+
 			</a>
 				</div>
 				<div class="close-menu">
@@ -225,12 +250,12 @@
 			</div>
 			<nav id="accordian">
 				<ul class="accordion-menu">
+					
 					<li class="current_page_item">
 						<a href="index.html" class="dropdownlink">Home</a>
 						<ul class="submenuItems">
-							<li><i class="flaticon-right-arrow-angle"></i><a href="index.html">Home One</a></li>
-							<li><i class="flaticon-right-arrow-angle"></i><a href="index2.html">Home Two</a></li>
-							<li><i class="flaticon-right-arrow-angle"></i><a href="index3.html">Home Three</a></li>
+							<li><i class="flaticon-right-arrow-angle"></i><a href="index.html">login</a></li>
+							
 						</ul>
 					</li>
 					<li>
@@ -260,7 +285,7 @@
 						<a href="contact2.html" class="dropdownlink">Contact</a>
 						<ul class="submenuItems">
 							<li><i class="flaticon-right-arrow-angle"></i><a href="contact2.html">Contact page</a></li>
-							<li><i class="flaticon-right-arrow-angle"></i><a href="404-two.html">404 page</a></li>
+							<li><i class="flaticon-right-arrow-angle"></i><a href="404-t.html">404 page</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -286,58 +311,196 @@
 					<div class="row">
 						<div class="col-12">
 							<div class="page_header">
-								<h1>error</h1>
+
+								 <div class="compt1">
+								<h1 id="compt1"><font color="black">0 <br></h1>
+                                 	<h2> <font color="black" > Avis Positifs<br></b></h2>
+                                 		</div>
+                                 		<div class="compt2">
+                                 		<h1 id="compt3"><font color="black">0 <br></h1>
+                                 	<h2> <font color="black"> clients fideles<br></b></h2>
+                                 		</div>
+                                 		
+                                      
+								<h1><font color="white" margin-left: 20px >Fitness Shop</h1>
+								<h2> nos contacts</h2>
 							</div>
+
 							<!-- /.page-header -->
 							<div class="breadcrumb_text">
-								<p><a href="#">Home</a> | <span>404</span></p>
+								<p><a href="#">accueil</a> | <span>Contact</span></p>
 							</div>
 						</div>
 						<!-- /.col-12 -->
 					</div>
 					<!-- /.row -->
+					   <form action="contact2.php">
+                                <div class="form_group">
+										<div class="" >
+											<input class="btn_two" type="submit" value="se deconnecter" >
+										</div>
+
+									</div>
+								</form>
 				</div>
 				<!-- /.vigo_container_two -->
+
 			</div>
 
 		</section>
 		<!-- /.breadcrumb_area -->
 
 		<!--=========================-->
-		<!--=        Error Cont         =-->
+		<!--=        Breadcrumb         =-->
 		<!--=========================-->
-		<section class="error_content_area error_content_two section_padding">
+		<section class="contact_content_area contact_content_two section_padding_two">
 			<div class="vigo_container_two">
 				<div class="row">
-					<div class="col-xl-6 col-md-6">
-						<div class="error_cont_img">
-							<img src="assets/img/error-pic.png" alt="hh">
-						</div>
-					</div>
-					<div class="col-xl-6 col-md-6">
-						<div class="error_cont_desc">
-							<h1>4<span>0</span>4</h1>
-							<p>
-								Woops..<br> The page you are looking for has disappeared
-							</p>
-							<div class="btn_wrapper">
-								<div class="accordion_btn">
-									<a href="index.html">
-								Back Home
-								<i class="fa fa-angle-right"></i>
-							</a>
+					<div class="col-xl-12">
+						<div class="contact_feature">
+							<div class="sn_contact_feature">
+								<div class="sn_contact_icon">
+									<i class="flaticon-house-outline"></i>
+								</div>
+
+								
+								<div class="sn_contact_content">
+									<h6>trouvez-nous a</h6>
+									<p>TOP FITNESS,<br>  Denden, Manouba</p>
+								</div>
+							</div>
+							<div class="sn_contact_feature">
+								<div class="sn_contact_icon">
+									<i class="flaticon-chat"></i>
+								</div>
+								<div class="sn_contact_content">
+									<h6>telephonez-nous</h6>
+									<a href="#">+216 55 130 057</a>
+								</div>
+							</div>
+							<div class="sn_contact_feature">
+								<div class="sn_contact_icon">
+									<i class="flaticon-mail"></i>
+								</div>
+								<div class="sn_contact_content">
+									<h6>notre email</h6>
+									<a href="#">Topfitness@yahoo.fr</a>
 								</div>
 							</div>
 						</div>
+						
+						<div class="contact_page_form">
+							
+   
+							<div class="contact_form" >
+								
+			
+                                 	
+                                <img src="C:\Users\Asus\Desktop\Nouveau dossier\omekomek2\wabb\themeim.com\demo\vaxin\demo-one\1.jpg" alt="">
+                                     	
+
+								<form action="ajoutReclamation.php" id="contact-form" name ="f" method="post">
+									
+										<div class="form_group half" >
+										<input type="text" name="nom" required="required"  placeholder="votre nom" id="nom"
+										 >
+										
+									</div>
+									
+							
+									<div class="form_group half">
+										
+										<input type="email" name="mail" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+										
+									</div>
+									<div class="form_group">
+										<input type="text" required="required" name="sujet"  placeholder="services/produit" id="sujet">
+
+										
+									</div>
+									<div class="form_group">
+										<textarea placeholder="Votre message" name="message" id="message"></textarea>
+									</div>
+									<div class="form_group">
+										<div class="btn_wrapper" >
+											<input class="btn_two" type="submit" value="envoyer" >
+										</div>
+
+									</div>
+
+                                     
+								</form>
+								
+ 
+
+                             
+							</div>
+
+							<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d51106.28983949464!2d10.103397466618954!3d36.81509034061619!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1srue+ebn+zaydoun%2C+Denden!5e0!3m2!1sfr!2stn!4v1553473301654" width="1257" height="400" frameborder="0" style="border:0"
+							  allowfullscreen ></iframe>
+ 
+		
+<div class="testimonial_hm_two" >
+			<div class="testimonial_hm_two_inner section_padding_two" top="1000" data-bg-image="media/images/banner-two/bg-three.png">
+				<div class="vigo_container_two">
+					<div class="row">
+						<div class="col-xl-10 offset-xl-1">
+							<div class="section_title_two">
+								<h2>les avis de nos clients</h2>
+								<img src="media/images/banner-two/hm-two-title-white.png" alt="">
+							</div>
+						</div>
 					</div>
+					<div class="row">
+						<div class="col-xl-8 offset-xl-2">
+							<div class="testimonial-carousel owl-carousel owl-theme">
+								<div class="single-testimonial-two">
+									<span class="flaticon-close"></span>
+									<p>Le supplément est un produit fabriqué et aussi le bon type de protéine pour obtenir des bénéfices pour la santé. ce dernier est destiné à la bonne quantité et au bon type de protéine »</p>
+									<div class="tes-img">
+										<img src="media/images/t1.jpg" alt="">
+									</div>
+									<p class="tes-name">John Doe - <span>UI Designer</span></p>
+								</div>
+								<div class="single-testimonial-two">
+									<span class="flaticon-close"></span>
+									<p>ces proteines ont changé ma vie par rapport aux autres il ne m'a pas provoqué un
+									dereglement hormonal ni un gonflement execcive” </p>
+									<div class="tes-img">
+										<img src="media/images/t1.jpg" alt="">
+									</div>
+									<p class="tes-name">John Doe - <span>UI Designer</span></p>
+								</div>
+								<div class="single-testimonial-two">
+									<span class="flaticon-close"></span>
+									<p>je n'ai pas senti que je prenai des produits chimiques le resultat est tres naturel” </p>
+									<div class="tes-img">
+										<img src="media/images/t1.jpg" alt="">
+									</div>
+									<p class="tes-name">John Doe - <span>UI Designer</span></p>
+								</div>
+							</div>
+						</div>
+						<!-- /.col-xl-12 -->
+					</div>
+					<!-- /.row -->
 				</div>
+				<!-- /.vigo_container_two -->
 			</div>
+		</div>
+   
+
 		</section>
 
 		<!--==========================-->
 		<!--=        Content         =-->
 		<!--==========================-->
 
+
+		<!--==========================-->
+		<!--=        call-action        =-->
+		<!--==========================-->
+		
 
 		<!--==========================-->
 		<!--=        footer2         =-->
@@ -348,20 +511,21 @@
 					<div class="col-xl-12">
 						<div class="widget widget_three">
 							<div class="widget_logo">
-								<a href="#">
-							<img src="assets/img/hm-two-ftr-logo.png" alt="#">
-						</a>
+								
+								<a href="logolarge.html" id="snipe">
+	<img src="assets/img/hm-two-logo.png">	
+</a>
 							</div>
 							<div class="widget_three_desc">
 								<p>
 									Copyright©
-									<a href="#">ThemeIM</a><br> All Rights Reserved
+									<a href="#">FitnessShop</a><br>Tous droits réservés
 								</p>
 							</div>
 						</div>
 						<div class="widget widget_three">
 							<div class="widget_three_title">
-								<h3>COMPANY</h3>
+								<h3>COMPANGNIE</h3>
 							</div>
 							<div class="widget_three_list">
 								<ul>
@@ -388,7 +552,7 @@
 						</div>
 						<div class="widget widget_three">
 							<div class="widget_three_title">
-								<h3>LINKS</h3>
+								<h3>LIENS</h3>
 							</div>
 							<div class="widget_three_list">
 								<ul>
@@ -405,7 +569,7 @@
 								</a>
 									</li>
 									<li>
-										<a href="#">
+							<a href="#">
 									<i class="fas fa-caret-right"></i>
 									Lorem Ipsum
 								</a>
@@ -444,6 +608,7 @@
 							<div class="widget_three_title">
 								<h3>FEED</h3>
 							</div>
+
 							<div class="widget_nwsfeed_list">
 								<a href="#">
 							<img src="media/images/banner-two/nwsfeed-one.png" alt="">
@@ -488,7 +653,7 @@
 		</div>
 		<!-- back to top -->
 
-		<!-- Sign in -->
+		<!-- Sign in -->!!!!!!!!!!!!!!!
 		<div class="modal fade" id="signUpModal">
 			<div class="modal-dialog">
 				<div class="modal-body">
@@ -586,20 +751,16 @@
 									</li>
 								</ul>
 							</div>
-						</div>
+						</div>ici c moi
 						<div class="login-right">
 							<div class="login-title">
 								<h3>Sign in through Vigo</h3>
 							</div>
 							<div class="login_main_form">
-								<form action="#">
-									<input type="text" placeholder="Email or Username">
-									<input type="text" placeholder="Password">
-									<label>
-								<input type="checkbox" name="vehicle" value="Bike">
-								Remember me
-								<span>Forgot your password</span>
-							</label>
+								<form action="connexion.php" method="POST">
+									<input type="text" placeholder="Email or Username" name="login">
+									<input type="text" placeholder="Password" name="pwd">
+								
 									<input type="submit" value="sign in">
 								</form>
 							</div>
@@ -611,12 +772,14 @@
 
 
 	</div>
+	
 	<!-- /#site -->
 
 	<!-- Dependency Scripts -->
+	
 	<script src="dependencies/jquery/jquery.min.js"></script>
 	<script src="dependencies/popper.js/popper.min.js"></script>
-	<script src="dependencies/bootstrap/js/bootstrap.min.js"></script>
+	<script src="dependencies/bootstrap/js/bootstrap.min.js"></script>r
 	<script src="dependencies/owl.carousel/js/owl.carousel.min.js"></script>
 	<script src="dependencies/magnific-popup/js/jquery.magnific-popup.min.js"></script>
 	<script src="dependencies/isotope-layout/js/isotope.pkgd.min.js"></script>
@@ -627,13 +790,26 @@
 	<script src="dependencies/gmap3/gmap3.min.js"></script>
 	<script src="dependencies/headroom/js/headroom.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsBrMPsyNtpwKXPPpG54XwJXnyobfMAIc"></script>
+
 	<!-- Site Scripts -->
 	<script src="assets/js/middle.js"></script>
 	<script src="assets/js/app.js"></script>
+     <script src="nb.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
 
-
+<script type="text/javascript" src="contact\defil.js"></script>
+<script type="text/javascript" src="contact/verif.js"></script>
+<script type="text/javascript" src="contact/nb.js"></script>
 </body>
 
 
-<!-- Mirrored from themeim.com/demo/vaxin/demo-one/404-two.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 24 Feb 2019 14:05:47 GMT -->
+<!-- Mirrored from themeim.com/demo/vaxin/demo-one/contact2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 24 Feb 2019 14:05:47 GMT -->
 </html>

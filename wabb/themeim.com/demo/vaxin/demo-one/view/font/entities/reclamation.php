@@ -1,20 +1,20 @@
 <?PHP
 class reclamation{
-	private $cin;
+	private $nom;
 	private $mail;
 	private $sujet;
 	private $message;
 	
-	function __construct($cin,$mail,$sujet,$message){
-		$this->cin=$cin;
+	function __construct($nom,$mail,$sujet,$message){
+		$this->nom=$nom;
 		$this->mail=$mail;
 		$this->sujet=$sujet;
 		$this->message=$message;
 		
 	}
 	
-	function getCin(){
-		return $this->cin;
+	function getnom(){
+		return $this->nom;
 	}
 	function getmail(){
 		return $this->mail;
@@ -26,8 +26,8 @@ class reclamation{
 		return $this->message;
 	}
 	
-function setCin($cin){
-		$this->mail=$mail;
+function setnom($nom){
+		$this->nom=$nom;
 	}
 	function setmail($mail){
 		$this->mail=$mail;

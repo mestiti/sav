@@ -1,3 +1,26 @@
+<?php
+session_start ();  
+ 
+// On récupère nos variables de session
+if (isset($_SESSION['l']) && isset($_SESSION['p']) && $_SESSION['r']=="client") 
+{ 
+   /*echo '<body onLoad="alert(\'Bienvenue! Votre login est '.$_SESSION['l'].' <br>et votre mot de passe est '.$_SESSION['p'].
+  '</b>Vous etes '.$_SESSION['r'].'  Identifiant de votre session est :'.session_id().'\')">'; */
+ 
+
+}
+
+else { 
+      echo 'Veuillez vous connecter </br>';  
+    //echo '<a href="./index.html">Cliquer pour se connecter</a>';
+    //header("location:index.html");
+
+}  
+
+
+
+?>
+
 <!doctype html>
 <html>
 
@@ -369,11 +392,14 @@
 <?PHP
 include "C:/wamp64/www/omekomek2/wabb/themeim.com/demo/vaxin/demo-one/view/font/entities/reclamation.php";
 include "C:/wamp64/www/omekomek2/wabb/themeim.com/demo/vaxin/demo-one/view/font/core/reclamationr.php";
-if (isset($_GET['cin'])){
+
+if (isset($_GET['idrec'])){
 	$reclamationr=new reclamationr();
-    $result=$reclamationr->recupererrec($_GET['cin']);
+    $result=$reclamationr->recupererrec($_GET['idrec']);
+
 	foreach($result as $row){
-		$cin=$row['cin'];
+		
+		$nom=$row['nom'];
 		$mail=$row['mail'];
 		$sujet=$row['sujet'];
 		$message=$row['message'];
@@ -384,9 +410,9 @@ if (isset($_GET['cin'])){
 <form action="modifierReclamation.php" id="contact-form" name ="f" method="post">
 									
 										<div class="form_group half" >
-										<input type="text" name="cin" required="required"  placeholder="votre cin" 
+										<input type="text" name="nom" required="required"  placeholder="votre nom" 
 
-										value="<?PHP echo $cin ?>"
+										value="<?PHP echo $nom ?>"
 										 >
 										
 									</div>
@@ -413,12 +439,10 @@ if (isset($_GET['cin'])){
 										</div>
 
 									</div>
-									<input type="hidden" name="cin_ini" value="<?PHP echo $_GET['cin'];?>">
+									<input type="hidden" name="id_ini" value="<?PHP echo $_GET['idrec'];?>">
 
 								</form>
-<form action="mail.php" method="post">
-<input class="btn_two" type="submit" value="modifier" name="evoyer" >
-</form>
+
 <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d51106.28983949464!2d10.103397466618954!3d36.81509034061619!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1srue+ebn+zaydoun%2C+Denden!5e0!3m2!1sfr!2stn!4v1553473301654" width="1257" height="400" frameborder="0" style="border:0"
 							  allowfullscreen ></iframe>
  

@@ -1,4 +1,17 @@
-<!doctype html>//
+
+<?php
+// On démarre la session
+session_start ();
+
+// On détruit les variables de notre session
+session_unset ();
+
+// On détruit notre session
+session_destroy ();
+
+
+?>
+<!doctype html>
 <html>
 
 
@@ -107,14 +120,24 @@
 						</a>
 									</li>
 								</ul>
+
 							</div>
 						</div>
+
 					</div>
 				</div>
+				<div class="header_login">
+								<div class="whc_toolbar_main_login">
+									
+									<a href="#" data-toggle="modal" data-target="#signInModal">login</a>
+								</div>
+							</div>
 			</section>
+
 			<!-- End top toolbar -->
 
 			<!-- Start Main Menu -->
+			
 			<section class="header_nav">
 				<div class="vigo_container_one">
 					<div class="row">
@@ -164,19 +187,13 @@
 									</li>
 									<li>
 										<a href="contact2.html">Contact</a>
-										<ul class="sub-menu">
-											<li><a href="espacerec.html">reclamation</a></li>
-											
-										</ul>
+										
 									</li>
 								</ul>
 							</nav>
 						</div>
-						<div class="col-auto">
-							<div class="hdr_btn_wrapper">
-								<a href="#" class="btn_one">Purchase</a>
-							</div>
-						</div>
+						
+
 					</div>
 				</div>
 			</section>
@@ -190,12 +207,7 @@
 							<div class="phone_number">
 								<span class="flaticon-phone-call"></span> <a href="#">+1 (895) 852–6523</a>
 							</div>
-							<div class="header_login">
-								<div class="whc_toolbar_main_login">
-									<a href="#" data-toggle="modal" data-target="#signUpModal">register</a>|
-									<a href="#" data-toggle="modal" data-target="#signInModal">login</a>
-								</div>
-							</div>
+							
 
 						</div>
 					</div>
@@ -231,12 +243,12 @@
 			</div>
 			<nav id="accordian">
 				<ul class="accordion-menu">
+					
 					<li class="current_page_item">
 						<a href="index.html" class="dropdownlink">Home</a>
 						<ul class="submenuItems">
-							<li><i class="flaticon-right-arrow-angle"></i><a href="index.html">Home One</a></li>
-							<li><i class="flaticon-right-arrow-angle"></i><a href="index2.html">Home Two</a></li>
-							<li><i class="flaticon-right-arrow-angle"></i><a href="index3.html">Home Three</a></li>
+							<li><i class="flaticon-right-arrow-angle"></i><a href="index.html">login</a></li>
+							
 						</ul>
 					</li>
 					<li>
@@ -292,6 +304,7 @@
 					<div class="row">
 						<div class="col-12">
 							<div class="page_header">
+
 								 <div class="compt1">
 								<h1 id="compt1"><font color="black">0 <br></h1>
                                  	<h2> <font color="black" > Avis Positifs<br></b></h2>
@@ -372,10 +385,10 @@
                                 <img src="C:\Users\Asus\Desktop\Nouveau dossier\omekomek2\wabb\themeim.com\demo\vaxin\demo-one\1.jpg" alt="">
                                      	
 
-								<form action="ajoutReclamation.php" id="contact-form" name ="f" method="post">
+								<form action="404-two.php" id="contact-form" name ="f" method="post">
 									
 										<div class="form_group half" >
-										<input type="text" name="cin" required="required"  placeholder="votre cin" id="cin"
+										<input type="text" name="nom" required="required"  placeholder="votre nom" id="nom"
 										 >
 										
 									</div>
@@ -411,7 +424,7 @@
 
 </p></marquee>
 
-
+ 
 
                              
 							</div>
@@ -632,7 +645,7 @@
 		</div>
 		<!-- back to top -->
 
-		<!-- Sign in -->
+		<!-- Sign in -->!!!!!!!!!!!!!!!
 		<div class="modal fade" id="signUpModal">
 			<div class="modal-dialog">
 				<div class="modal-body">
@@ -730,20 +743,16 @@
 									</li>
 								</ul>
 							</div>
-						</div>
+						</div>ici c moi
 						<div class="login-right">
 							<div class="login-title">
 								<h3>Sign in through Vigo</h3>
 							</div>
 							<div class="login_main_form">
-								<form action="#">
-									<input type="text" placeholder="Email or Username">
-									<input type="text" placeholder="Password">
-									<label>
-								<input type="checkbox" name="vehicle" value="Bike">
-								Remember me
-								<span>Forgot your password</span>
-							</label>
+								<form action="connexion.php" method="POST">
+									<input type="text" placeholder="Email or Username" name="login">
+									<input type="text" placeholder="Password" name="pwd">
+								
 									<input type="submit" value="sign in">
 								</form>
 							</div>

@@ -8,8 +8,7 @@ session_unset ();
 // On détruit notre session
 session_destroy ();
 
-// On redirige le visiteur vers la page d'accueil
-header ('location: auth.html');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,20 +42,20 @@ header ('location: auth.html');
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
+            <form action="connexion.php" method="POST">
               <h1>Login Form</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input type="text" class="form-control" placeholder="Username" required="" name="login"/>
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" class="form-control" placeholder="Password" required="" name="pwd"/>
               </div>
               <div>
-                <form action="connexion.php" method="POST">
-                <a class="btn btn-default submit" >Log in</a>
+               
+                <input class="btn btn-default submit" type="submit" name="button" id="button" value="Valider"/>
                 </form>
                 <a class="reset_pass" href="#">Lost your password?</a>
-              </form>
+              
               </div>
 
               <div class="clearfix"></div>
@@ -117,3 +116,4 @@ header ('location: auth.html');
     </div>
   </body>
 </html>
+---------

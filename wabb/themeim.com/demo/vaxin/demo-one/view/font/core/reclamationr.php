@@ -1,8 +1,8 @@
 <?PHP
 include "C:/wamp64/www/omekomek2/wabb/themeim.com/demo/vaxin/demo-one/config.php";
 class reclamationr {
-function afficherrec ($cin){
-	$sql="SElECT * From reclamation where cin='$cin'";
+function afficherrec ($mail1){
+	$sql="SElECT * From reclamation where mail='$mail1'";
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);
@@ -15,17 +15,17 @@ function afficherrec ($cin){
 	}
 	
 	function ajouterrec($reclamation){
-		$sql="insert into reclamation (cin,mail,sujet,message) values (:cin, :mail,:sujet,:message)";
+		$sql="insert into reclamation (nom,mail,sujet,message) values (:nom, :mail,:sujet,:message)";
 		$db = config::getConnexion();
 		try{
         $req=$db->prepare($sql);
 		
-        $cin=$reclamation->getCin();
+        $nom=$reclamation->getnom();
         $mail=$reclamation->getmail();
         $sujet=$reclamation->getsujet();
         $message=$reclamation->getmessage();
         
-		$req->bindValue(':cin',$cin);
+		$req->bindValue(':nom',$nom);
 		$req->bindValue(':mail',$mail);
 		$req->bindValue(':sujet',$sujet);
 		$req->bindValue(':message',$message);
@@ -41,7 +41,7 @@ function afficherrec ($cin){
 	}
 	
 	function afficherreclamation(){
-		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
+		//$sql="SElECT * From employe e inner join formationphp.employe a on e.nom= a.nom";
 		$sql="SElECT * From reclamation";
 		$db = config::getConnexion();
 		try{
@@ -52,11 +52,11 @@ function afficherrec ($cin){
             die('Erreur: '.$e->getMessage());
         }	
 	}
-	function supprimerrec($cin){
-		$sql="DELETE FROM reclamation where cin= :cin";
+	function supprimerrec($id){
+		$sql="DELETE FROM reclamation where idrec= :id";
 		$db = config::getConnexion();
         $req=$db->prepare($sql);
-		$req->bindValue(':cin',$cin);
+		$req->bindValue(':id',$id);
 		try{
             $req->execute();
            // header('Location: index.php');
@@ -65,21 +65,22 @@ function afficherrec ($cin){
             die('Erreur: '.$e->getMessage());
         }
 	}
-	function modifierrec($reclamation,$cin){
-		$sql="UPDATE reclamation SET cin=:cinn, mail=:mail,sujet=:sujet,message=:message WHERE cin=:cin";
+	function modifierrec($reclamation,$id){
+		$sql="UPDATE reclamation SET nom=:nom, mail=:mail,sujet=:sujet,message=:message WHERE idrec=:id";
 		
 		$db = config::getConnexion();
 		//$db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
 try{		
         $req=$db->prepare($sql);
-		$cinn=$reclamation->getCin();
+		$nom=$reclamation->getnom();
         $mail=$reclamation->getmail();
         $sujet=$reclamation->getsujet();
         $message=$reclamation->getmessage();
        
-		$datas = array(':cinn'=>$cinn, ':cin'=>$cin, ':mail'=>$mail,':sujet'=>$sujet,':message'=>$message);
-		$req->bindValue(':cinn',$cinn);
-		$req->bindValue(':cin',$cin);
+		$datas = array(':idrec'=>$id, ':nom'=>$nom, ':mail'=>$mail,':sujet'=>$sujet,':message'=>$message);
+		
+		$req->bindValue(':id',$id);
+		$req->bindValue(':nom',$nom);
 		$req->bindValue(':mail',$mail);
 		$req->bindValue(':sujet',$sujet);
 		$req->bindValue(':message',$message);
@@ -97,8 +98,8 @@ try{
 		
 	}
 	
-	function recupererrec($cin){
-		$sql="SELECT * from reclamation where cin=$cin";
+	function recupererrec($id){
+		$sql="SELECT * from reclamation where idrec=$id";
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);
@@ -109,18 +110,7 @@ try{
         }
 	}
 	
-	function rechercherListerec($tarif){
-		$sql="SELECT * from employe where tarifHoraire=$tarif";
-		$db = config::getConnexion();
-		try{
-		$liste=$db->query($sql);
-		return $liste;
-		}
-        catch (Exception $e){
-            die('Erreur: '.$e->getMessage());
-        }
-	}
-
+	
 
 
 

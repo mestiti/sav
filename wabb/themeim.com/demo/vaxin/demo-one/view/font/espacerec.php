@@ -1,4 +1,25 @@
+<?php
+session_start ();  
+ 
+// On récupère nos variables de session
+if (isset($_SESSION['l']) && isset($_SESSION['p']) && $_SESSION['r']=="client" && $_SESSION['e']) 
+{ 
+   /*echo '<body onLoad="alert(\'Bienvenue! Votre login est '.$_SESSION['l'].' <br>et votre mot de passe est '.$_SESSION['p'].
+  '</b>Vous etes '.$_SESSION['r'].'  Identifiant de votre session est :'.session_id().'\')">'; */
+ 
 
+}
+
+else { 
+      echo 'Veuillez vous connecter </br>';  
+    //echo '<a href="./index.html">Cliquer pour se connecter</a>';
+    //header("location:index.html");
+
+}  
+
+
+
+?>
 <!doctype html>
 <html>
 
@@ -160,10 +181,10 @@
 										<a href="Livraison.html">Livraison</a>
 									</li>
 									<li>
-										<a href="contact2.html">Contact</a>
+										<a href="contact2client.php">service apres vente</a>
 										<ul class="sub-menu">
-											<li><a href="contact2.html">contact</a></li>
-											<li><a href="404-two.html">404 pages</a></li>
+											<li><a href="espacerec.php">espace reclamation</a></li>
+											
 										</ul>
 									</li>
 								</ul>
@@ -296,6 +317,14 @@
 						</div>
 						<!-- /.col-12 -->
 					</div>
+					 <form action="contact2.php">
+                                <div class="form_group">
+										<div class="" >
+											<input class="btn_two" type="submit" value="se deconnecter" >
+										</div>
+
+									</div>
+								</form>
 					<!-- /.row -->
 				</div>
 				<!-- /.vigo_container_two -->
@@ -317,38 +346,39 @@
 							
 							$reclamation1r=new reclamationr();
 						
-$listerec=$reclamation1r->afficherreclamation();
+$listerec=$reclamation1r->afficherrec($_SESSION['e']);
 
 //var_dump($listeEmployes->fetchAll());
 ?>
 
 
 
-
-
 <?PHP
 foreach($listerec as $row){
 	?>
-	<div class="error_cont_desc"></br>
-	<p> votre cin: <?PHP  echo $row['cin']; ?></p>
-	<p>votre mail: <?PHP echo $row['mail']; ?></p>
-	<p>votre sujet: <?PHP echo $row['sujet']; ?></p>
-	<p>votre message: <?PHP echo $row['message']; ?></p>
-</div>
-
-	<form method="POST" action="supprimerReclamation.php">
-	<input type="submit" name="supprimer" value="supprimer">
-	<input type="hidden" value="<?PHP echo $row['cin']; ?>" name="cin">
+<div style="padding:5px; width:300px; margin:auto; border:8px solid #D2691E; background-color:#DCDCDC; -moz-border-radius:20px; -khtml-border-radius:20px; -webkit-border-radius:20px; border-radius:20px;">
+	<p style="border: 2px; border-color:black;  text-align: center; color: black;">identifiant de votre reclamation : <?PHP echo $row['idrec']; ?></p></br>
+	<p style=" border: 2px; border-color:#646464; text-align: center; color: black">votre nom : <?PHP echo $row['nom']; ?></p></br>
+	<p style=" border: 2px; border-color:#646464; text-align: center; color: black">votre mail : <?PHP echo $row['mail']; ?></p></br>
+	<p style=" border: 2px; border-color:#646464; text-align: center; color: black">votre sujet : <?PHP echo $row['sujet']; ?></p></br>
+	<p style=" border: 2px; border-color:#646464; text-align: center; color: black">votre message : <?PHP echo $row['message']; ?></p></br>
+	</div>
+						
+	<form method="POST" action="supprimerReclamation.php" class="">
+	<input type="submit" name="supprimer" value="supprimer"  class="btn_two" >
+	<input type="hidden" value="<?PHP echo $row['idrec']; ?>" name="idrec">
 	</form>
-	
-	<a href="contact2modif.php?cin=<?PHP echo $row['cin']; ?>">
+	<a href="contact2modif.php?idrec=<?PHP echo $row['idrec']; ?>">
 	Modifier</a>
 	
-	
+	</tr>
 	<?PHP
 }
 ?>
 
+
+
+						
 
 
 						</div>

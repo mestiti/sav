@@ -1,7 +1,21 @@
-
-
-
 <?php
+session_start ();  
+ 
+// On récupère nos variables de session
+if (isset($_SESSION['l']) && isset($_SESSION['p']) && $_SESSION['r']=="admin") 
+{ 
+   
+
+}
+
+else { 
+      echo 'Veuillez vous connecter </br>';  
+    //echo '<a href="./index.html">Cliquer pour se connecter</a>';
+    header("location:index.html");
+
+}  
+
+
 include "C:/wamp64/www/omekomek2/wabb/themeim.com/demo/vaxin/demo-one/view/back/gentelella-master/production/core/rdvr.php";
 $rdvr2=new rdvr();
 $listerdv=$rdvr2->trierid();
@@ -75,14 +89,12 @@ $listerdv=$rdvr2->trierid();
                       <li><a href="index3.html">Dashboard3</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+                   <li><a><i class="fa fa-edit"></i> SAV <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="form.html">General Form</a></li>
-                      <li><a href="form_advanced.html">Advanced Components</a></li>
-                      <li><a href="form_valid.php">rendez vous</a></li>
-                      <li><a href="form_wizards.html">Form Wizard</a></li>
-                      <li><a href="form_upload.html">Form Upload</a></li>
-                      <li><a href="form_buttons.html">Form Buttons</a></li>
+                         <li><a href="form_valid.php">rendez vous</a></li>
+                      <li><a href="pagemail.php">mail</a></li>
+                      <li><a href="statistique.php">statistique</a></li>
+                      
                     </ul>
                   </li>
                   <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
@@ -358,7 +370,7 @@ foreach($listerdv as $row){
 
                             <tbody>
                               <tr>
-    <td><?PHP echo $row['idreclamation']; ?></td>
+    <td><?PHP echo $row['idrdv']; ?></td>
     
   <td><?PHP echo $row['mailclient']; ?></td>
   <td><?PHP echo $row['datee']; ?></td>
@@ -367,12 +379,12 @@ foreach($listerdv as $row){
   
   <td><form method="POST" action="supprimerrendezvous.php">
   <input type="submit" name="supprimer" value="supprimer">
-  <input type="hidden" value="<?PHP echo $row['idreclamation']; ?>" name="idreclamation">
+  <input type="hidden" value="<?PHP echo $row['idrdv']; ?>" name="idrdv">
   </form>
   </td>
   <td><form method="POST" action="validmodif.php">
   <input type="submit" name="modifier" value="modifier">
-  <input type="hidden" value="<?PHP echo $row['idreclamation']; ?>" name="idmodif">
+  <input type="hidden" value="<?PHP echo $row['idrdv']; ?>" name="idmodif">
   </form></td>
   </tr>
   <?PHP
@@ -387,6 +399,34 @@ foreach($listerdv as $row){
 
 
 
+<table id="datatable-keytable" class="table table-striped table-bordered">
+                            <thead>
+                              <tr>
+                                
+                                <th>mail des clients issus des reclamations</th>
+                          
+                              </tr>
+                            </thead>
+<?PHP
+$rdv2r=new rdvr();
+$listerdv=$rdv2r->affichermail();
+
+foreach($listerdv as $row){
+  ?>
+
+                            <tbody>
+                              <tr>
+    
+    
+  <td><?PHP echo $row['mail']; ?></td>
+ 
+  </tr>
+  <?PHP
+}
+?>
+
+                            </tbody>
+                          </table>
 
 
                      <form class="form-horizontal form-label-left" novalidate action="ajoutrendezvous.php" method="POST">
@@ -398,7 +438,7 @@ foreach($listerdv as $row){
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name" >
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  class="form-control col-md-7 col-xs-12" placeholder="id reclamation" required="required" type="number" name="idreclamation">
+                          <input  class="form-control col-md-7 col-xs-12" placeholder="id rendez vous" required="required" type="number" name="idrdv">
                         </div>
                       </div>
                       <div class="item form-group">
@@ -426,7 +466,7 @@ foreach($listerdv as $row){
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  class="form-control col-md-7 col-xs-12" placeholder="etat" required="required" type="number" name="etat" min="0" max="1">
+                          <input  class="form-control col-md-7 col-xs-12" placeholder="etat: 0/1" required="required" type="number" name="etat" min="0" max="1">
                         </div>
                       </div>
   

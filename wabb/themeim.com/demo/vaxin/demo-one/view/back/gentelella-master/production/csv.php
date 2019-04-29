@@ -5,7 +5,7 @@ define('DELIMITER', ';');
  
 // connexion à la base de donnée avec PDO, mysql_* étant déprécié
 $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'');
-$pdo = new PDO('mysql:host=localhost;dbname=sav', 'root', '', $options);
+$pdo = new PDO('mysql:host=localhost;dbname=fitnessshop', 'root', '', $options);
  
 // la requète
 $rqst = $pdo->query('SELECT * FROM `rendezvous`');
